@@ -45,5 +45,18 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>写真の保存のためカメラを使用します。</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>写真の保存のため写真ライブラリにアクセスします。</string>
+	<key>GMSApiKey</key>
+	<string>AIzaSyBJ800_E5XQP8_ozry2BtoqJxUVkzyvCuM</string>
+	<key>UISupportsDocumentBrowser</key>
+	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
+
+
+
 </dict>
 </plist>
