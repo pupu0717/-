@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.diving_log">
+    package="com.pupu.diving_log">
 
 
     <uses-permission android:name="android.permission.INTERNET"/>

@@ -1,4 +1,4 @@
-package com.example.diving_log
+package com.pupu.diving_log
 
 import io.flutter.embedding.android.FlutterActivity
 
