@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
 
+//マップから位置を選択するクラス
 class MapSelectPage extends StatefulWidget {
   //const MapSelectPage({Key? key}) : super(key: key);
   final LatLng mapcode;
@@ -51,6 +52,7 @@ class _MapSelectPageState extends State<MapSelectPage> {
     );
   }
 
+  //タップした位置にマーカーを置く関数
   void _handleTap(LatLng tappedPoint) {
     setState(
       () {

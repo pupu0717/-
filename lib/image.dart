@@ -2,6 +2,7 @@ import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'database.dart';
 
+//写真を保存する関数
 Future<String?> pickAndSaveImage() async {
   try {
     final picker = ImagePicker();

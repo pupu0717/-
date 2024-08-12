@@ -8,6 +8,7 @@ import 'dart:convert';
 import 'outputform.dart';
 import 'inputform.dart';
 
+//ログの詳細ページ
 class LogdetailPage extends StatefulWidget {
   final int datakey;
 
@@ -196,6 +197,7 @@ class LogdetailPageState extends State<LogdetailPage> {
     );
   }
 
+  //削除の確認のダイアログ
   void _showdeleteDialog(BuildContext context) {
     showDialog(
       context: context,

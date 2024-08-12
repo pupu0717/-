@@ -1,6 +1,7 @@
 import 'recordaddpage.dart';
 import 'package:flutter/material.dart';
 
+//ランキングの詳細ページ
 class Rankingdetail extends StatelessWidget {
   final int datakey;
 

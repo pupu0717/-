@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+//テーブルウィジェットに使用する関数
 Widget tableleft(String title, content) {
   return Container(
     padding: const EdgeInsets.all(8.0),
@@ -32,6 +33,7 @@ Widget tableleft(String title, content) {
   );
 }
 
+//テーブルウィジェットに使用する関数2
 Widget tabelright(String title, content) {
   return Container(
     padding: const EdgeInsets.all(8.0),

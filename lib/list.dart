@@ -1,3 +1,4 @@
+//国のリスト
 final List<String> countries = [
   '日本',
   'タイ',
@@ -39,6 +40,7 @@ final List<String> countries = [
   'サウジアラビア',
 ];
 
+//県のリスト
 final List<String> prefectures = [
   '沖縄県',
   '静岡県',
@@ -68,6 +70,7 @@ final List<String> prefectures = [
   '宮崎県',
 ];
 
+//国内エリアのリスト
 final List<String> domesticArea = [
   '支笏湖',
   '秋保大滝',
@@ -187,6 +190,7 @@ final List<String> domesticArea = [
   '西表島'
 ];
 
+//国を選択するリスト
 final List<String> selectcountries = [
   'ー',
   '日本',
@@ -230,6 +234,7 @@ final List<String> selectcountries = [
   'その他'
 ];
 
+//国と県の対応リスト
 Map<String, List<String>> countryprefectures = {
   'ー': ['ー'],
   '日本': [
@@ -300,6 +305,7 @@ Map<String, List<String>> countryprefectures = {
   'サウジアラビア': ['ー', 'サウジアラビア'],
 };
 
+//県とエリアの対応リスト
 Map<String, List<String>> prefectureLocations = {
   'ー': ['ー'],
   '北海道': ['ー', '積丹', '積丹美国', 'ローソク岩', '知床', '支笏湖'],
@@ -838,6 +844,7 @@ Map<String, List<String>> prefectureLocations = {
   ],
 };
 
+//各エリアの座標
 Map<String, List<double>> locationcoodinate = {
   'ー': [35.67, 139.76],
   '本部半島': [26.67, 127.87],

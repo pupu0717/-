@@ -9,12 +9,15 @@ import 'package:file_picker/file_picker.dart';
 import 'inputform.dart';
 import 'package:flutter/material.dart';
 
+//データベースの設定をするクラス
 class DatabaseHelper {
   static final DatabaseHelper instance = DatabaseHelper._init();
   static Database? _database;
 
+  //初期化
   DatabaseHelper._init();
 
+  //データベースを取得
   Future<Database> get database async {
     if (_database != null) return _database!;
     _database = await _initDB('record.db');
@@ -29,6 +32,7 @@ class DatabaseHelper {
     return await openDatabase(path, version: 1, onCreate: _createDB);
   }
 
+  //データベースを構築
   Future _createDB(Database db, int version) async {
     await db.execute('''
     CREATE TABLE record (
@@ -60,6 +64,7 @@ class DatabaseHelper {
     ''');
   }
 
+  //ログに番号を振り直す
   Future<int> create(Map<String, dynamic> record) async {
     final db = await instance.database;
     int id = await db.insert('record', record);
@@ -76,17 +81,20 @@ class DatabaseHelper {
     return id;
   }
 
+  //全てのレコードを取得
   Future<List<Map<String, dynamic>>> getAllRecords() async {
     final db = await instance.database;
     return await db.query('record');
   }
 
+  //レコードを日付順に並び替える
   Future<List<Map<String, dynamic>>> RecordByDate() async {
     final db = await instance.database;
     var res = await db.query('record', orderBy: 'date ASC, entrytime ASC');
     return res;
   }
 
+  //全てのレコードを読み込む。入力された文字列によって並び順が変わる。
   Future<List<Map<String, dynamic>>> readAllRecords(String key) async {
     final db = await instance.database;
     String orderBy;
@@ -127,11 +135,13 @@ class DatabaseHelper {
     return rec;
   }
 
+  //データベースを閉じる。
   Future close() async {
     final db = await instance.database;
     db.close();
   }
 
+  //デーたベースの内容が更新されたとき、データベースを更新
   Future<int> updateRecord(int id, Map<String, dynamic> values) async {
     final db = await instance.database;
     return await db.update(
@@ -142,6 +152,7 @@ class DatabaseHelper {
     );
   }
 
+  //入力されたidに対応するデータを削除
   Future<void> delete(int id) async {
     final db = await database;
     await db.delete(
@@ -151,6 +162,7 @@ class DatabaseHelper {
     );
   }
 
+  //入力されたidに対応する行を取得
   Future<Map<String, dynamic>> getRecord(int id) async {
     Database db = await instance.database;
     List<Map<String, dynamic>> results = await db.query(
@@ -165,6 +177,7 @@ class DatabaseHelper {
     }
   }
 
+  //データベースの内容をcsvファイルに出力
   Future<void> exportAndShareCSV() async {
     final db = await instance.database;
     List<Map<String, dynamic>> records = await db.query('record');
@@ -241,6 +254,7 @@ class DatabaseHelper {
     }
   }
 
+  //csvファイルから復元
   Future<void> restoreFromCSV(BuildContext context) async {
     if (await Permission.storage.request().isGranted) {
       // ファイル選択ダイアログを表示

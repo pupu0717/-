@@ -6,6 +6,7 @@ import 'rankingdetal.dart';
 import 'outputform.dart';
 import 'list.dart';
 
+//データ一覧を表示するページのクラス
 class Awardpage extends StatelessWidget {
   const Awardpage({super.key});
 
@@ -159,6 +160,7 @@ class Awardpage extends StatelessWidget {
   }
 }
 
+//ランキングカードの関数。要修正。
 Widget rankingCard(
     BuildContext context,
     title,
@@ -284,6 +286,7 @@ Widget rankingCard(
   );
 }
 
+//コンプリートへの道を構成する関数
 Widget completeCard(
   BuildContext context,
   title,
@@ -357,6 +360,7 @@ Widget completeCard(
   );
 }
 
+//データベースからcountry,prefecture,locationの要素を取得
 Future<List<String>> fetchRecordItems() async {
   final db = await DatabaseHelper.instance.database;
 

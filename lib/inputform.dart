@@ -113,6 +113,7 @@ Widget memoInputForm(controller) {
   );
 }
 
+//県を選択するクラス
 class PrefecturePicker extends StatelessWidget {
   final TextEditingController controller;
   final Function(String) onSelectedPrefecture;
@@ -188,6 +189,7 @@ class PrefecturePicker extends StatelessWidget {
   }
 }
 
+//国を選択するクラス
 class CountryPicker extends StatelessWidget {
   final TextEditingController controller;
   final Function(String) onSelectedCountry;
@@ -265,6 +267,7 @@ class CountryPicker extends StatelessWidget {
   }
 }
 
+//エリアを選択するクラス
 class LocationPicker extends StatelessWidget {
   final TextEditingController controller;
   final Function(String) onSelectedLocation;
