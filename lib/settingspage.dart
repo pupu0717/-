@@ -1,3 +1,4 @@
+import 'package:diving_log/backuppage.dart';
 import 'package:flutter/material.dart';
 import 'database.dart';
 import 'Inputform.dart';
@@ -74,7 +75,12 @@ class settingsPage extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                _showrestoreDialog(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => backupPage(),
+                  ),
+                );
               },
               child: Container(
                 height: 50,
