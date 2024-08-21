@@ -3,3 +3,20 @@ workflows:
         name: Codemagic Sample Workflow
         max_build_duration: 120
         instance_type: mac_mini_m1
+scripts:
+    - name: Set up code signing settings on Xcode project
+      script: | 
+        xcode-project use-profiles
+    - name: Get Flutter packages
+      script: | 
+        flutter packages pub get
+    - name: Install pods
+      script: | 
+        find . -name "Podfile" -execdir pod install \;
+    - name: Flutter build ipa
+      script: | 
+          flutter build ios --debug --no-codesign
+  artifacts:
+    - build/ios/ipa/*.ipa
+    - /tmp/xcodebuild_logs/*.log
+    - flutter_drive.log
