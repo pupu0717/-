@@ -8,7 +8,8 @@ target 'Runner' do
   use_modular_headers!
 
   # Flutter dependencies
-  flutter_application_path = '/Users/pupup/diving_log'
-  load File.join(flutter_application_path, '.ios', 'Flutter', 'pod_helper.rb')
+  flutter_application_path = '../..'
+  #load File.join(flutter_application_path, '.ios', 'Flutter', 'pod_helper.rb')
+  load '/Users/pupup/diving_log/.ios/Flutter/pod_helper.rb'
   # Your other pods here
 end
