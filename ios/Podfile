@@ -3,12 +3,17 @@ platform :ios, '14.0'
 # CocoaPods analytics
 install! 'cocoapods', :integrate_targets => false
 
+flutter_application_path = '../..'
+  load File.join(flutter_application_path, '.ios', 'Flutter', 'pod_helper.rb')
+
 target 'diving_log' do
   use_frameworks!
   use_modular_headers!
 
   # Flutter dependencies
-  flutter_application_path = '../..'
-  load File.join(flutter_application_path, '.ios', 'Flutter', 'pod_helper.rb')
+  #flutter_application_path = '../..'
+  #load File.join(flutter_application_path, '.ios', 'Flutter', 'pod_helper.rb')
+
+  install_all_flutter_pods(flutter_application_path)
   # Your other pods here
 end
