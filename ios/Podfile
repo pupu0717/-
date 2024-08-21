@@ -3,7 +3,7 @@ platform :ios, '14.0'
 # CocoaPods analytics
 install! 'cocoapods', :integrate_targets => false
 
-target 'Runner' do
+target 'diving_log' do
   use_frameworks!
   use_modular_headers!
 
