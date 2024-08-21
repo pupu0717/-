@@ -2,6 +2,12 @@ platform :ios, '14.0'
 
 workspace 'ios/Runner.xcworkspace'
 
+def flutter_install_all_ios_pods(flutter_application_path)
+  # Load all Flutter plugins
+  require File.expand_path('../flutter_pods_helper', __FILE__)
+  flutter_pods_helper(flutter_application_path)
+end
+
 target 'Runner' do
   use_frameworks!
   use_modular_headers!
