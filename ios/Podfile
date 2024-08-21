@@ -1,24 +1,16 @@
-platform :ios, '14.0'
+platform :ios, '12.0'
 
-# CocoaPods のセットアップ
-# プロジェクトのルートディレクトリを指す相対パス
 flutter_application_path = '../..'
 
-# FlutterのPodfileに必要な設定をロード
-#load File.join(flutter_application_path, '.ios', 'Flutter', 'pod_helper.rb')
+target 'Runner' do
+  use_frameworks!
 
-# 必要なFlutterのポッドをインストール
-install_all_flutter_pods(flutter_application_path)
+  # Flutterのポッドを追加
+  pod 'Flutter', :path => File.join(flutter_application_path, '.ios', 'Flutter', 'Flutter.framework')
+  pod 'FlutterPluginRegistrant', :path => File.join(flutter_application_path, '.ios', 'Flutter', 'FlutterPluginRegistrant')
 
-target 'diving_log' do
-  use_frameworks! # または use_modular_headers!
+  # file_picker プラグインのポッドを追加
+  pod 'file_picker', :path => File.join(flutter_application_path, '.ios', 'Flutter', 'file_picker')
 
-  # Flutterの依存関係をインストール
-  flutter_install_all_ios_pods(flutter_application_path)
-
-  # ここに追加のポッドを指定することができます
-  # pod 'YourPodName', '~> 1.0'
+  # 他に必要なポッドがあればここに追加
 end
-
-# FlutterのPodfileの一部として、iOS 10.0以上が必要です。
-# バージョンはプロジェクトの最低限サポートするiOSバージョンに合わせてください
