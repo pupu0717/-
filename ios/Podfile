@@ -1,17 +1,15 @@
 platform :ios, '14.0'
 
 # CocoaPods analytics
-install! 'cocoapods', :generate_multiple_pods_project => true
-
-# Flutter Pods
-flutter_application_path = '../..'
-load File.join(flutter_application_path, '.ios', 'Flutter', 'pod_helper.rb')
+install! 'cocoapods', :integrate_targets => false
 
 target 'Runner' do
   use_frameworks!
   use_modular_headers!
 
-  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+  # Flutter dependencies
+  flutter_application_path = '../..'
+  load File.join(flutter_application_path, '.ios', 'Flutter')
 
-  # Add any other pods you would like to use here
+  # Your other pods here
 end
