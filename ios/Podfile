@@ -9,7 +9,7 @@ target 'Runner' do
 
   # Flutter dependencies
   flutter_application_path = '../..'
-  load File.join(flutter_application_path, '.ios', 'Flutter')
+  load File.join(flutter_application_path, '.ios', 'Flutter', 'pod_helper.rb')
 
   # Your other pods here
 end
