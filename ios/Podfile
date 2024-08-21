@@ -1,18 +1,40 @@
+# Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+# use_frameworks!
+
 platform :ios, '14.0'
 
-workspace 'ios/Runner.xcworkspace'
+# CocoaPods analytics
+install! 'cocoapods', :deterministic_uuids => false
 
-def flutter_install_all_ios_pods(flutter_application_path)
-  # Load all Flutter plugins
-  require File.expand_path('../flutter_pods_helper', __FILE__)
-  flutter_pods_helper(flutter_application_path)
-end
+# Define the workspace and its configuration
+workspace 'Runner.xcworkspace'
 
+# Set up the Pods
 target 'Runner' do
   use_frameworks!
-  use_modular_headers!
+  
+  # Flutter-specific
+  flutter_application_path = '../'
+  #load File.expand_path('../flutter_pods_helper', __FILE__)
+  #flutter_pods_helper(flutter_application_path)
+
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
 
   # Pods for Runner
+  # Add your pods here
 
-  flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+
+
+# Post-install processing
+post_install do |installer|
+  # Ensure that Xcode is using the correct settings for Firebase
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)']
+        config.build_settings['OTHER_LDFLAGS'] ||= ['$(inherited)']
+    end
+  end
+end
+  # Add additional settings or configuration as needed
 end
