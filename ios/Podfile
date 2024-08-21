@@ -1,4 +1,4 @@
-platform :ios, '10.0'
+platform :ios, '14.0'
 
 # CocoaPods のセットアップ
 # プロジェクトのルートディレクトリを指す相対パス
@@ -10,7 +10,7 @@ load File.join(flutter_application_path, '.ios', 'Flutter', 'pod_helper.rb')
 # 必要なFlutterのポッドをインストール
 install_all_flutter_pods(flutter_application_path)
 
-target 'Runner' do
+target 'diving_log' do
   use_frameworks! # または use_modular_headers!
 
   # Flutterの依存関係をインストール
