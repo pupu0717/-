@@ -1,1 +1,3 @@
 platform :ios, '14.0'
+
+workspace 'ios/Runner.xcworkspace'
