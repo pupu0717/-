@@ -1,9 +1,13 @@
+import 'dart:io';
+
 import 'package:diving_log/backuppage.dart';
 import 'package:flutter/material.dart';
 import 'database.dart';
 import 'Inputform.dart';
 import 'main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'image.dart';
+import 'dart:async';
 
 class settingsPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -50,6 +54,31 @@ class settingsPage extends StatelessWidget {
                 ),
                 child: const Text(
                   'ダイブ本数設定',
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return defaultImagePicker();
+                  },
+                );
+              },
+              child: Container(
+                height: 50,
+                alignment: Alignment.center,
+                decoration: const BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      width: 1.0,
+                      color: Color.fromARGB(255, 233, 233, 233),
+                    ),
+                  ),
+                ),
+                child: const Text(
+                  'デフォルト画像選択',
                 ),
               ),
             ),
@@ -300,6 +329,81 @@ class settingsPage extends StatelessWidget {
           ],
         );
       },
+    );
+  }
+}
+
+class defaultImagePicker extends StatefulWidget {
+  @override
+  _defaultImagePickerState createState() => _defaultImagePickerState();
+}
+
+class _defaultImagePickerState extends State<defaultImagePicker> {
+  String? _imagePath1;
+
+  Future<void> saveData(String key, String value) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString(key, value);
+  }
+
+  Future<String> loadData() async {
+    final prefs = await SharedPreferences.getInstance();
+    defaultImagePath = prefs.getString('defaultImagePath') ?? '';
+    return defaultImagePath;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: const Text('確認'),
+      backgroundColor: Colors.white,
+      content: Form(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text('ログ一覧ページでデフォルトで表示される画像を変更できます。'),
+            TextButton(
+                onPressed: () async {
+                  final pickedImagePath = await pickAndSaveImage();
+                  setState(() {
+                    _imagePath1 = pickedImagePath;
+                  });
+                },
+                child: const Text('画像を選択')),
+            _imagePath1 != null && _imagePath1!.isNotEmpty
+                ? Image.file(File(_imagePath1!))
+                : defaultImagePath.isNotEmpty
+                    ? Image.file(File(defaultImagePath))
+                    : Container(),
+            TextButton(
+                onPressed: () {
+                  setState(() {
+                    _imagePath1 = '';
+                    defaultImagePath = '';
+                  });
+                },
+                child: const Text('デフォルトに戻す')),
+          ],
+        ),
+      ),
+      actions: [
+        TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: const Text('戻る')),
+        TextButton(
+          onPressed: () async {
+            await saveData('defaultImagePath', _imagePath1!);
+            await loadData();
+            Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => MyApp()),
+              (route) => false,
+            );
+          },
+          child: const Text('OK'),
+        ),
+      ],
     );
   }
 }

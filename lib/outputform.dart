@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'main.dart';
 
 //テーブルウィジェットに使用する関数
 Widget tableleft(String title, content) {
@@ -65,4 +66,18 @@ Widget tabelright(String title, content) {
 Future<String?> getData(String key) async {
   final prefs = await SharedPreferences.getInstance();
   return prefs.getString(key) ?? '0';
+}
+
+//ダイブカウントをロードする
+Future<int> loadDivecount() async {
+  final prefs = await SharedPreferences.getInstance();
+  divecount = prefs.getInt('divecount') ?? 0;
+  return divecount;
+}
+
+//デフォルト画像をロードする
+Future<String> loadImagePath() async {
+  final prefs = await SharedPreferences.getInstance();
+  defaultImagePath = prefs.getString('defaultImagePath') ?? '';
+  return defaultImagePath;
 }

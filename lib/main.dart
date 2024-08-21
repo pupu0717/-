@@ -5,10 +5,14 @@ import 'recordaddpage.dart';
 import 'bottomBar.dart';
 import 'datapage.dart';
 import 'Inputform.dart';
+import 'outputform.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 //これまでのダイブ回数を記録
 int divecount = 0;
+
+//デフォルトの画像を設定
+String defaultImagePath = '';
 
 //メインのアプリ起動
 void main() {
@@ -22,16 +26,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Record',
       //日本語対応
-      localizationsDelegates: const [
+      localizationsDelegates: [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate
       ],
-      supportedLocales: const [
+      supportedLocales: [
         Locale('ja', ''),
       ],
       home: HomePage(),
@@ -44,15 +48,17 @@ class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
-  _HomePageState createState() => _HomePageState();
+  HomePageState createState() => HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class HomePageState extends State<HomePage> {
   int _selectedIndex = 1;
 
   @override
   void initState() {
     super.initState();
+    loadDivecount();
+    loadImagePath();
     reloadrecord();
   }
 
@@ -64,10 +70,10 @@ class _HomePageState extends State<HomePage> {
 
   //それぞれのボタンのページ遷移
   final List<Widget> _pages = [
-    AddRecordPage(),
-    RecordlistPage(),
-    Awardpage(),
-    GoogleMapPage(),
+    const AddRecordPage(),
+    const RecordlistPage(),
+    const Awardpage(),
+    const GoogleMapPage(),
   ];
 
   @override

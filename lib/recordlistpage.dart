@@ -1,3 +1,5 @@
+import 'package:diving_log/main.dart';
+
 import 'logdetailpage.dart';
 import 'settingspage.dart';
 import 'package:flutter/material.dart';
@@ -174,12 +176,19 @@ class RecordListPageState extends State<RecordlistPage> {
               width: double.infinity,
               fit: BoxFit.cover,
             )
-          : Image.asset(
-              'assets/noimage.jpg',
-              height: 150,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
+          : defaultImagePath.isNotEmpty
+              ? Image.file(
+                  File(defaultImagePath),
+                  height: 150,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                )
+              : Image.asset(
+                  'assets/noimage.jpg',
+                  height: 150,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
     );
   }
 

@@ -104,7 +104,7 @@ class backupPage extends StatelessWidget {
             TextButton(
               onPressed: () async {
                 await DatabaseHelper.instance.restoreFromCSV(context);
-                Future.delayed(Duration(milliseconds: 100), () {
+                Future.delayed(const Duration(milliseconds: 100), () {
                   Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (context) => MyApp()),
                     (route) => false,
@@ -137,7 +137,7 @@ class backupPage extends StatelessWidget {
             TextButton(
               onPressed: () async {
                 await DatabaseHelper.instance.restoreFromCulmCSV(context);
-                Future.delayed(Duration(milliseconds: 100), () {
+                Future.delayed(const Duration(milliseconds: 100), () {
                   Navigator.of(context).pushAndRemoveUntil(
                     MaterialPageRoute(builder: (context) => MyApp()),
                     (route) => false,
