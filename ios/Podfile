@@ -8,7 +8,7 @@ flutter_application_path = '../..'
 #load File.join(flutter_application_path, '.ios', 'Flutter', 'pod_helper.rb')
 
 # 必要なFlutterのポッドをインストール
-#install_all_flutter_pods(flutter_application_path)
+install_all_flutter_pods(flutter_application_path)
 
 target 'diving_log' do
   use_frameworks! # または use_modular_headers!
